@@ -6,5 +6,12 @@
 
     <groupId>pl.harpi.samples</groupId>
     <artifactId>j2ee-demo</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>j2ee-demo-api</module>
+        <module>j2ee-demo-domain</module>
+        <module>j2ee-demo-service</module>
+        <module>j2ee-demo-ear</module>
+    </modules>
 </project>
