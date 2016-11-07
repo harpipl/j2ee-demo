@@ -11,5 +11,38 @@
 
     <artifactId>j2ee-demo-ear</artifactId>
 
+    <packaging>ear</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>pl.harpi.samples</groupId>
+            <artifactId>j2ee-demo-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>pl.harpi.samples</groupId>
+            <artifactId>j2ee-demo-domain</artifactId>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>pl.harpi.samples</groupId>
+            <artifactId>j2ee-demo-service</artifactId>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+        </dependency>
+    </dependencies>
 </project>

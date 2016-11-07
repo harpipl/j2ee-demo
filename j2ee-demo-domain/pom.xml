@@ -11,5 +11,23 @@
 
     <artifactId>j2ee-demo-domain</artifactId>
 
+    <packaging>ejb</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>pl.harpi.samples</groupId>
+            <artifactId>j2ee-demo-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>

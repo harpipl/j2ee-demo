@@ -6,3 +6,7 @@
 # Maven
 log/
 target/
+j2ee-demo-api/src/
+j2ee-demo-domain/src/
+j2ee-demo-ear/src/
+j2ee-demo-service/src/
