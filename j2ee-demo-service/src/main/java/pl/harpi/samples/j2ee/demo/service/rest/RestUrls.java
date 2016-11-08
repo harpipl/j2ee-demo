@@ -7,7 +7,7 @@ public final class RestUrls {
     private static final String SEGMENT_PERSON_RESOURCE = "persons";
 
     /**
-     * URL template for a single person: <i>repository/persons/{0:deploymentId}</i>
+     * URL template for a single person: <i>repository/persons/{0:personId}</i>
      */
     public static final String[] URL_PERSON = {SEGMENT_VERSION_1, SEGMENT_REPOSITORY_RESOURCES, SEGMENT_PERSON_RESOURCE, "{0}"};
 }
