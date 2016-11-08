@@ -9,7 +9,7 @@ public class RestUrlBuilder {
         url += "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + request.getServletPath();
 
         for (String f : fragments) {
-            url += "/" + f;
+                url += "/" + f;
         }
 
         url = MessageFormat.format(url, arguments);

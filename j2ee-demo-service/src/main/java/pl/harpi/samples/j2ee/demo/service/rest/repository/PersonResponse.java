@@ -14,9 +14,7 @@ public class PersonResponse {
     private String lastName;
     private String url;
 
-    protected PersonResponse() {
-
-    }
+    private PersonResponse() {}
 
     public PersonResponse(Person person, String url) {
         setId(person.getId());
