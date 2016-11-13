@@ -1,13 +1,9 @@
 package pl.harpi.samples.j2ee.demo.service.rest.repository;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement
 public class PersonCollectionResponse {
-    private PersonCollectionResponse() {}
-
     public PersonCollectionResponse(List<PersonResponse> data) {
         this.data = data;
     }

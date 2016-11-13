@@ -1,6 +1,6 @@
-package pl.harpi.j2ee.demo.api.base.dao;
+package pl.harpi.samples.j2ee.demo.api.base.types.dao;
 
-import pl.harpi.j2ee.demo.api.base.model.Persistable;
+import pl.harpi.samples.j2ee.demo.api.base.types.model.Persistable;
 
 import java.io.Serializable;
 import java.util.List;

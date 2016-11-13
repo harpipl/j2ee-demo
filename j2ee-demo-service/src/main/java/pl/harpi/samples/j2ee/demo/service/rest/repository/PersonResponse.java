@@ -1,22 +1,18 @@
 package pl.harpi.samples.j2ee.demo.service.rest.repository;
 
+import pl.harpi.samples.j2ee.demo.api.base.model.IPerson;
 import pl.harpi.samples.j2ee.demo.domain.model.Person;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement
 public class PersonResponse {
     private Long id;
     private String firstName;
     private String lastName;
     private String url;
 
-    private PersonResponse() {}
-
-    public PersonResponse(Person person, String url) {
+    public PersonResponse(IPerson person, String url) {
         setId(person.getId());
         setFirstName(person.getFirstName());
         setLastName(person.getLastName());
@@ -26,7 +22,6 @@ public class PersonResponse {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -34,7 +29,6 @@ public class PersonResponse {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -42,7 +36,6 @@ public class PersonResponse {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -50,7 +43,6 @@ public class PersonResponse {
     public String getUrl() {
         return url;
     }
-
     public void setUrl(String url) {
         this.url = url;
     }

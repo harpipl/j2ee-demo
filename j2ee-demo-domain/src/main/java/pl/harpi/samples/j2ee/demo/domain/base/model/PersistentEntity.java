@@ -1,6 +1,6 @@
 package pl.harpi.samples.j2ee.demo.domain.base.model;
 
-import pl.harpi.j2ee.demo.api.base.model.Persistable;
+import pl.harpi.samples.j2ee.demo.api.base.types.model.Persistable;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

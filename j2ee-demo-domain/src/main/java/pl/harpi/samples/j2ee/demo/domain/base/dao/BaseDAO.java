@@ -1,7 +1,7 @@
 package pl.harpi.samples.j2ee.demo.domain.base.dao;
 
-import pl.harpi.j2ee.demo.api.base.dao.IBaseDAO;
-import pl.harpi.j2ee.demo.api.base.model.Persistable;
+import pl.harpi.samples.j2ee.demo.api.base.types.dao.IBaseDAO;
+import pl.harpi.samples.j2ee.demo.api.base.types.model.Persistable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,12 +12,16 @@ import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.util.List;
 
-public abstract class BaseDAO<T extends Persistable<ID>, ID extends Serializable> implements IBaseDAO<T, ID> {
+public abstract class BaseDAO<C extends T, T extends Persistable<ID>, ID extends Serializable> implements IBaseDAO<T, ID> {
     @PersistenceContext
     private EntityManager entityManager;
-    private final Class<T> entityClass;
+    private final Class<C> entityClass;
 
-    public BaseDAO(Class<T> entityClass) {
+    public BaseDAO() {
+        this.entityClass = null;
+    }
+
+    public BaseDAO(Class<C> entityClass) {
         this.entityClass = entityClass;
     }
 
@@ -58,10 +62,10 @@ public abstract class BaseDAO<T extends Persistable<ID>, ID extends Serializable
     @Override
     public List<T> findAll() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<T> cq = cb.createQuery(entityClass);
-        Root<T> rootEntry = cq.from(entityClass);
-        CriteriaQuery<T> all = cq.select(rootEntry);
-        TypedQuery<T> allQuery = entityManager.createQuery(all);
-        return allQuery.getResultList();
+        CriteriaQuery<C> cq = cb.createQuery(entityClass);
+        Root<C> rootEntry = cq.from(entityClass);
+        CriteriaQuery<C> all = cq.select(rootEntry);
+        TypedQuery<C> allQuery = entityManager.createQuery(all);
+        return (List<T>) allQuery.getResultList();
     }
 }

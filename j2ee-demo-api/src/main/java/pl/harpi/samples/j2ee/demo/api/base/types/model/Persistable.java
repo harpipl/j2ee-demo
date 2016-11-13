@@ -1,4 +1,4 @@
-package pl.harpi.j2ee.demo.api.base.model;
+package pl.harpi.samples.j2ee.demo.api.base.types.model;
 
 import java.io.Serializable;
 
