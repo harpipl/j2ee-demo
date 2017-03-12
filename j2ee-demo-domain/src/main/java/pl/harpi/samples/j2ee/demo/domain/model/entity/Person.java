@@ -19,6 +19,8 @@ public class Person extends BaseEntity implements DTOCreatable<PersonDTO> {
     @Column(name = "LAST_NAME", length = 240, nullable = false)
     private String lastName;
 
+    protected Person() {}
+
     public Person(PersonDTO dto) {
         super(dto.getId(), null);
         this.setFirstName(dto.getFirstName());

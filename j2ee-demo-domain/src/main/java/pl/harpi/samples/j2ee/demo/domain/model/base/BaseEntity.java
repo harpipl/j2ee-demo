@@ -3,6 +3,7 @@ package pl.harpi.samples.j2ee.demo.domain.model.base;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@MappedSuperclass
 public abstract class BaseEntity implements Serializable {
     @Id
     @Column(name="ID", insertable = true, updatable = false, nullable = false)
@@ -12,6 +13,8 @@ public abstract class BaseEntity implements Serializable {
     @Version
     @Column(name="VER", insertable = true, updatable = true, nullable = false)
     private Integer version;
+
+    protected BaseEntity() {}
 
     protected BaseEntity(Long id, Integer version) {
         this.setId(id);

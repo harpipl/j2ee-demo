@@ -17,6 +17,7 @@ import java.util.List;
 
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 @Path("/v1/repository/persons")
 public class PersonResource {
     @Inject

@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
-    <persistence-unit name="J2EEDemoOracleDS">
-        <jta-data-source>java:/J2EEDemoOracleDS</jta-data-source>
+    <persistence-unit name="ExampleDS">
+        <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+
+        <class>pl.harpi.samples.j2ee.demo.domain.model.base.BaseEntity</class>
+        <class>pl.harpi.samples.j2ee.demo.domain.model.entity.Person</class>
 
         <properties>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
 
+<!--
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-
             <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/data.sql" />
+-->
         </properties>
     </persistence-unit>
 </persistence>
