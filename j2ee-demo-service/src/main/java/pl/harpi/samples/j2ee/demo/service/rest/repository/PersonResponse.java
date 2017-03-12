@@ -1,10 +1,6 @@
 package pl.harpi.samples.j2ee.demo.service.rest.repository;
 
-import pl.harpi.samples.j2ee.demo.api.base.model.IPerson;
-import pl.harpi.samples.j2ee.demo.domain.model.Person;
-
-import java.util.ArrayList;
-import java.util.List;
+import pl.harpi.samples.j2ee.demo.api.model.PersonDTO;
 
 public class PersonResponse {
     private Long id;
@@ -12,7 +8,7 @@ public class PersonResponse {
     private String lastName;
     private String url;
 
-    public PersonResponse(IPerson person, String url) {
+    public PersonResponse(PersonDTO person, String url) {
         setId(person.getId());
         setFirstName(person.getFirstName());
         setLastName(person.getLastName());

@@ -35,6 +35,12 @@
             </dependency>
             <dependency>
                 <groupId>pl.harpi.samples</groupId>
+                <artifactId>j2ee-demo-domain-jpa</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>pl.harpi.samples</groupId>
                 <artifactId>j2ee-demo-service</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <type>war</type>

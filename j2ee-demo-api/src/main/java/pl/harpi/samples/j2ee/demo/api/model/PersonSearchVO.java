@@ -1,6 +1,6 @@
-package pl.harpi.samples.j2ee.demo.service.rest.repository;
+package pl.harpi.samples.j2ee.demo.api.model;
 
-public class PersonRequest {
+public class PersonSearchVO {
     private String firstName;
     private String lastName;
 
@@ -19,5 +19,4 @@ public class PersonRequest {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
 }
