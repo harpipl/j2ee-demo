@@ -1,4 +1,4 @@
-package pl.harpi.samples.j2ee.demo.domain.model.base;
+package pl.harpi.samples.j2ee.demo.model.base;
 
 public abstract class Validator {
     private ValidationNotificationHandler notificationHandler;

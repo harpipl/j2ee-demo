@@ -9,19 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>j2ee-demo-domain</artifactId>
-
-    <packaging>ejb</packaging>
+    <artifactId>j2ee-demo-model</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>pl.harpi.samples</groupId>
             <artifactId>j2ee-demo-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>pl.harpi.samples</groupId>
-            <artifactId>j2ee-demo-model</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>

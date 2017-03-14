@@ -5,8 +5,8 @@ import pl.harpi.samples.j2ee.demo.api.exceptions.PersonNotFoundException;
 import pl.harpi.samples.j2ee.demo.api.model.PersonDTO;
 import pl.harpi.samples.j2ee.demo.api.model.PersonLocal;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
-import pl.harpi.samples.j2ee.demo.domain.model.entity.Person;
-import pl.harpi.samples.j2ee.demo.domain.model.repository.PersonRepository;
+import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;
+import pl.harpi.samples.j2ee.demo.model.entity.Person;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

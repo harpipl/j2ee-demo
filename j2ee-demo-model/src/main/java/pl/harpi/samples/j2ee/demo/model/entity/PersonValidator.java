@@ -1,7 +1,7 @@
-package pl.harpi.samples.j2ee.demo.domain.model.entity;
+package pl.harpi.samples.j2ee.demo.model.entity;
 
-import pl.harpi.samples.j2ee.demo.domain.model.base.ValidationNotificationHandler;
-import pl.harpi.samples.j2ee.demo.domain.model.base.Validator;
+import pl.harpi.samples.j2ee.demo.model.base.ValidationNotificationHandler;
+import pl.harpi.samples.j2ee.demo.model.base.Validator;
 
 public class PersonValidator extends Validator {
     private Person person;

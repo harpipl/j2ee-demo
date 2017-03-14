@@ -4,8 +4,8 @@
     <persistence-unit name="ExampleDS">
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
 
-        <class>pl.harpi.samples.j2ee.demo.domain.model.base.BaseEntity</class>
-        <class>pl.harpi.samples.j2ee.demo.domain.model.entity.Person</class>
+        <class>pl.harpi.samples.j2ee.demo.model.base.BaseEntity</class>
+        <class>pl.harpi.samples.j2ee.demo.model.entity.Person</class>
 
         <properties>
             <property name="hibernate.show_sql" value="true"/>
