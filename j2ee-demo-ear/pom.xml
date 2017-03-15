@@ -20,6 +20,11 @@
         </dependency>
         <dependency>
             <groupId>pl.harpi.samples</groupId>
+            <artifactId>j2ee-demo-model</artifactId>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>pl.harpi.samples</groupId>
             <artifactId>j2ee-demo-domain</artifactId>
             <type>ejb</type>
         </dependency>

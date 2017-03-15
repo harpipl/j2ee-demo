@@ -11,6 +11,8 @@
 
     <artifactId>j2ee-demo-model</artifactId>
 
+    <packaging>ejb</packaging>
+
     <dependencies>
         <dependency>
             <groupId>pl.harpi.samples</groupId>

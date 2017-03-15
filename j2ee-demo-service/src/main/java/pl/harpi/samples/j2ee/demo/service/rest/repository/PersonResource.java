@@ -30,7 +30,7 @@ public class PersonResource {
             PersonDTO person = personService.getPersonById(Long.valueOf(personId));
             return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponse(person, request)).build();
         } catch (ApplicationException e) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.CONFLICT).build();
         }
     }
 

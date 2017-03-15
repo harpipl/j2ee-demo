@@ -22,6 +22,7 @@
         <dependency>
             <groupId>pl.harpi.samples</groupId>
             <artifactId>j2ee-demo-model</artifactId>
+            <type>ejb</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
