@@ -8,9 +8,10 @@
         <class>pl.harpi.samples.j2ee.demo.model.entity.Person</class>
 
         <properties>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
+            <!--<property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>-->
 
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 <!--
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/data.sql" />
