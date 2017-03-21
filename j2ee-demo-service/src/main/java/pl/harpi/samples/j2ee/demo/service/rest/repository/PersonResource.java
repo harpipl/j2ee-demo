@@ -10,9 +10,7 @@ import pl.harpi.samples.j2ee.demo.service.rest.RestResponseFactory;
 import javax.ejb.EJBException;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -54,8 +52,10 @@ public class PersonResource extends BaseResource {
         try {
             person = personService.savePerson(person);
             return Response.status(Response.Status.CREATED).entity(RestResponseFactory.createPersonResponse(person, this.getHttpRequest())).build();
-        } catch (EJBException | ApplicationException e) {
-            return Response.status(Response.Status.CONFLICT).build();
+        } catch (EJBException e) {
+            return Response.status(Response.Status.CONFLICT).entity(e.getMessage()).build();
+        } catch (ApplicationException e) {
+            return Response.status(Response.Status.CONFLICT).entity(e.getObject()).build();
         }
 
     }

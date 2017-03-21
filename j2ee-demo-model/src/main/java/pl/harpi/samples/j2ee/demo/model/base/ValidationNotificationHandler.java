@@ -12,4 +12,6 @@ public interface ValidationNotificationHandler {
     void handleWarning(String message);
 
     void handleWarning(String message, Object object);
+
+    boolean hasErrors();
 }

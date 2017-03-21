@@ -5,8 +5,9 @@ import pl.harpi.samples.j2ee.demo.api.exceptions.PersonNotFoundException;
 import pl.harpi.samples.j2ee.demo.api.model.PersonDTO;
 import pl.harpi.samples.j2ee.demo.api.model.PersonLocal;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
-import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;
+import pl.harpi.samples.j2ee.demo.domain.model.base.MessagesValidationNotificationHandler;
 import pl.harpi.samples.j2ee.demo.model.entity.Person;
+import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -20,9 +21,17 @@ public class PersonBean implements PersonLocal {
 
     @Override
     public PersonDTO savePerson(PersonDTO personDTO) throws ApplicationException {
+        MessagesValidationNotificationHandler handler = new MessagesValidationNotificationHandler();
         Person person = new Person(personDTO);
-        repository.save(person);
-        return person.createDTO();
+
+        person.validate(handler);
+
+        if (handler.hasErrors()) {
+            throw new ApplicationException(handler.getMessages());
+        } else {
+            repository.save(person);
+            return person.createDTO();
+        }
     }
 
     @Override
