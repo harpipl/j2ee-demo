@@ -7,5 +7,7 @@ import java.util.List;
 public interface PersonLocal {
     PersonDTO savePerson(PersonDTO person) throws ApplicationException;
     PersonDTO getPersonById(Long personId) throws ApplicationException;
-    List<PersonDTO> getAllPersons();
+
+    List<PersonDTO> getPersons(PersonSearchVO findVO);
+    List<PersonDTO> getPersons(PersonSearchVO findVO, int start, int size);
 }

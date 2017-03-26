@@ -14,6 +14,7 @@ import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import pl.harpi.samples.j2ee.base.service.rest.BaseResource;
 import pl.harpi.samples.j2ee.demo.service.rest.RestResponseFactory;
 
 import javax.ws.rs.client.WebTarget;
@@ -45,7 +46,9 @@ public class PersonResourceIT {
                 .addAsLibraries(pom.resolve("pl.harpi.samples:j2ee-demo-model:ejb:?").withoutTransitivity().asFile())
                 .addAsLibraries(pom.resolve("pl.harpi.samples:j2ee-demo-domain:ejb:?").withTransitivity().asFile())
                 .addAsLibraries(pom.resolve("org.assertj:assertj-core").withoutTransitivity().asFile())
+                .addPackage(BaseResource.class.getPackage())
                 .addPackage(RestResponseFactory.class.getPackage())
+                .addPackage(PersonResource.class.getPackage())
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsWebInfResource("web.xml");
     }

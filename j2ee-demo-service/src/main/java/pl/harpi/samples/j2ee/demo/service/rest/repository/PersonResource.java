@@ -1,10 +1,12 @@
 package pl.harpi.samples.j2ee.demo.service.rest.repository;
 
 import pl.harpi.samples.j2ee.base.service.rest.BaseResource;
+import pl.harpi.samples.j2ee.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.exceptions.ApplicationException;
 import pl.harpi.samples.j2ee.demo.api.model.PersonDTO;
 import pl.harpi.samples.j2ee.demo.api.model.PersonDTOBuilder;
 import pl.harpi.samples.j2ee.demo.api.model.PersonLocal;
+import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
 import pl.harpi.samples.j2ee.demo.service.rest.RestResponseFactory;
 
 import javax.ejb.EJBException;
@@ -35,8 +37,11 @@ public class PersonResource extends BaseResource {
     }
 
     @GET
-    public Response getPersons() {
-        List<PersonDTO> persons = personService.getAllPersons();
+    public Response getPersons(@QueryParam("start") Integer paramStart, @QueryParam("size") Integer paramSize) {
+        int start = (paramStart == null) ? ResourceConstants.PAGING_DEFAULT_START : paramStart;
+        int size = (paramSize == null) ? ResourceConstants.PAGING_DEFAULT_SIZE : paramSize;
+
+        List<PersonDTO> persons = personService.getPersons(new PersonSearchVO(), start, size);
 
         return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponseList(persons, this.getHttpRequest())).build();
     }
