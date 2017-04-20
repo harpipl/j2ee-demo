@@ -3,9 +3,8 @@ package pl.harpi.samples.j2ee.demo.model.base;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.lang.reflect.ParameterizedType;
-import java.util.List;
 
-public abstract class JPABaseRepository<ENTITY extends BaseEntity, SEARCH extends Object> implements BaseRepository<ENTITY, SEARCH> {
+public abstract class JPABaseRepository<ENTITY extends BaseEntity, SEARCH> implements BaseRepository<ENTITY, SEARCH> {
     @PersistenceContext
     private EntityManager entityManager;
     private final Class<ENTITY> entityClass;

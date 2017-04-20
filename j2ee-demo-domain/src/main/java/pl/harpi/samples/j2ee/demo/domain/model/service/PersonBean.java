@@ -1,5 +1,7 @@
 package pl.harpi.samples.j2ee.demo.domain.model.service;
 
+import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
+import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
 import pl.harpi.samples.j2ee.demo.api.exceptions.ApplicationException;
 import pl.harpi.samples.j2ee.demo.api.exceptions.PersonNotFoundException;
 import pl.harpi.samples.j2ee.demo.api.model.PersonDTO;
@@ -7,7 +9,8 @@ import pl.harpi.samples.j2ee.demo.api.model.PersonLocal;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
 import pl.harpi.samples.j2ee.demo.domain.model.base.MessagesValidationNotificationHandler;
 import pl.harpi.samples.j2ee.demo.model.base.BaseRepository;
-import pl.harpi.samples.j2ee.demo.model.base.DataResult;
+import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
+import pl.harpi.samples.j2ee.demo.model.base.ValidationNotificationHandler;
 import pl.harpi.samples.j2ee.demo.model.entity.Person;
 import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;
 
@@ -23,7 +26,7 @@ public class PersonBean implements PersonLocal {
 
     @Override
     public PersonDTO savePerson(PersonDTO personDTO) throws ApplicationException {
-        MessagesValidationNotificationHandler handler = new MessagesValidationNotificationHandler();
+        ValidationNotificationHandler handler = new MessagesValidationNotificationHandler();
         Person person = new Person(personDTO);
 
         person.validate(handler);
@@ -48,21 +51,28 @@ public class PersonBean implements PersonLocal {
     }
 
     @Override
-    public List<PersonDTO> getPersons(PersonSearchVO findVO) {
-        return getPersons(findVO,0, BaseRepository.INFINITE_MAX_RESULT_SIZE);
+    public DataResult getPersons(PersonSearchVO findVO, QueryProperty sort, OrderType order) {
+        return getPersons(findVO, 0, BaseRepository.INFINITE_MAX_RESULT_SIZE, sort, order);
     }
 
     @Override
-    public List<PersonDTO> getPersons(PersonSearchVO findVO, int start, int size) {
+    public DataResult getPersons(PersonSearchVO findVO, int start, int size, QueryProperty sort, OrderType order) {
         List<PersonDTO> personDTOs = new ArrayList<>();
 
-        DataResult search = repository.searchPage(findVO, start, size);
+        DataResult result = null;
+        DataResult search = repository.createPersonQuery().searchPage(findVO, start, size, sort, order);
         if (search != null && search.getData() != null) {
-            List<Object> persons = search.getData();
+            List<Object> persons = (List<Object>) search.getData();
             persons.forEach(p -> personDTOs.add(((Person) p).createDTO()));
+
+            List objects = (List) (personDTOs);
+            result = new DataResult(search.getStart(), search.getSize(), search.getSort(), search.getOrder(), search.getTotal(), objects);
+        } else {
+            List objects = (List) (personDTOs);
+            result = new DataResult(0, 0, sort, order, 0, objects);
         }
 
-        return personDTOs;
+        return result;
 
     }
 }

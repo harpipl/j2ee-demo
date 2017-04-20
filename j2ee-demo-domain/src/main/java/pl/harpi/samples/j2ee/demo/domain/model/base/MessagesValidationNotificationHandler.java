@@ -7,7 +7,7 @@ import pl.harpi.samples.j2ee.demo.model.base.ValidationNotificationHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessagesValidationNotificationHandler implements ValidationNotificationHandler {
+public class MessagesValidationNotificationHandler implements ValidationNotificationHandler<Message> {
     private boolean hasErrors = false;
 
     private List<Message> messages = new ArrayList<>();
@@ -42,6 +42,7 @@ public class MessagesValidationNotificationHandler implements ValidationNotifica
         messages.add(new Message(MessageType.WARNING, message, object));
     }
 
+    @Override
     public List<Message> getMessages() {
         return messages;
     }

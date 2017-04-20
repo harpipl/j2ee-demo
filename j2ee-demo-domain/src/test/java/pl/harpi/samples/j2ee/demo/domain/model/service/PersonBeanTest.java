@@ -4,12 +4,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import pl.harpi.samples.j2ee.demo.api.model.PersonDTO;
+import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
+import pl.harpi.samples.j2ee.demo.api.model.PersonQueryProperty;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
-import pl.harpi.samples.j2ee.demo.model.base.BaseRepository;
+import pl.harpi.samples.j2ee.demo.model.repository.jpa.JPAPersonQuery;
 import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -21,30 +25,42 @@ public class PersonBeanTest {
     private PersonBean personService;
 
     @Mock
+    private EntityManager entityManager;
+
+    @Mock
     private PersonRepository repository;
 
     @Test
     public void search_withAllPersons_shouldReturnFourPersons() {
         // given
+        Query query = Mockito.mock(Query.class);
+
+        when(entityManager.createQuery(anyString())).thenReturn(query);
+        when(repository.createPersonQuery()).thenReturn(new JPAPersonQuery(entityManager));
 
         // when
-        List<PersonDTO> persons = personService.getPersons(new PersonSearchVO());
+        DataResult persons = personService.getPersons(new PersonSearchVO(), PersonQueryProperty.SORT_BY_DEFAULT, PersonQueryProperty.ORDER_BY_DEFAULT);
 
         // then
-        verify(repository, times(1)).searchPage(any(), eq(0), eq(BaseRepository.INFINITE_MAX_RESULT_SIZE));
+        verify(repository, times(1)).createPersonQuery();
 
         assertThat(persons).isNotNull();
-        assertThat(persons.size()).isEqualTo(0);
+        assertThat(persons.getData()).isNotNull();
+        assertThat(((List<Object>) (persons.getData())).size()).isEqualTo(0);
     }
 
     @Test
     public void search_withStartTwoAndSizeOne_shouldReturnOnlyDavid() {
         // given
+        Query query = Mockito.mock(Query.class);
+
+        when(entityManager.createQuery(anyString())).thenReturn(query);
+        when(repository.createPersonQuery()).thenReturn(new JPAPersonQuery(entityManager));
 
         // when
-        List<PersonDTO> persons = personService.getPersons(new PersonSearchVO(), 2, 1);
+        DataResult persons = personService.getPersons(new PersonSearchVO(), 2, 1, PersonQueryProperty.SORT_BY_DEFAULT, PersonQueryProperty.ORDER_BY_DEFAULT);
 
         // then
-        verify(repository, times(1)).searchPage(any(), eq(2), eq(1));
+        verify(repository, times(1)).createPersonQuery();
     }
 }

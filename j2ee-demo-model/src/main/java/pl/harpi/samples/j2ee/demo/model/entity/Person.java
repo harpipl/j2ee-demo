@@ -9,10 +9,11 @@ import pl.harpi.samples.j2ee.demo.model.base.ValidationNotificationHandler;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "PERSON")
-public class Person extends BaseEntity implements DTOCreatable<PersonDTO> {
+public class Person extends BaseEntity implements Serializable, DTOCreatable<PersonDTO> {
     @Column(name = "FIRST_NAME", length = 240, nullable = false)
     private String firstName;
 

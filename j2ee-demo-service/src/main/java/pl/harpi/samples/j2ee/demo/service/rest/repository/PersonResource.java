@@ -2,11 +2,11 @@ package pl.harpi.samples.j2ee.demo.service.rest.repository;
 
 import pl.harpi.samples.j2ee.base.service.rest.BaseResource;
 import pl.harpi.samples.j2ee.base.service.rest.ResourceConstants;
+import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
+import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
+import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
 import pl.harpi.samples.j2ee.demo.api.exceptions.ApplicationException;
-import pl.harpi.samples.j2ee.demo.api.model.PersonDTO;
-import pl.harpi.samples.j2ee.demo.api.model.PersonDTOBuilder;
-import pl.harpi.samples.j2ee.demo.api.model.PersonLocal;
-import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
+import pl.harpi.samples.j2ee.demo.api.model.*;
 import pl.harpi.samples.j2ee.demo.service.rest.RestResponseFactory;
 
 import javax.ejb.EJBException;
@@ -15,7 +15,6 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 @RequestScoped
 @Produces(MediaType.APPLICATION_JSON)
@@ -37,13 +36,16 @@ public class PersonResource extends BaseResource {
     }
 
     @GET
-    public Response getPersons(@QueryParam("start") Integer paramStart, @QueryParam("size") Integer paramSize) {
+    public Response getPersons(@QueryParam("start") Integer paramStart, @QueryParam("size") Integer paramSize, @QueryParam("sort") String sort, @QueryParam("order") OrderType order) {
         int start = (paramStart == null) ? ResourceConstants.PAGING_DEFAULT_START : paramStart;
         int size = (paramSize == null) ? ResourceConstants.PAGING_DEFAULT_SIZE : paramSize;
 
-        List<PersonDTO> persons = personService.getPersons(new PersonSearchVO(), start, size);
+        QueryProperty sortBy = (sort == null) ? PersonQueryProperty.SORT_BY_DEFAULT : PersonQueryProperty.findByName(sort);
+        order = (order == null) ? PersonQueryProperty.ORDER_BY_DEFAULT : order;
 
-        return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponseList(persons, this.getHttpRequest())).build();
+        DataResult dataResult = personService.getPersons(new PersonSearchVO(), start, size, sortBy, order);
+
+        return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponseList(dataResult, this.getHttpRequest())).build();
     }
 
     @POST
