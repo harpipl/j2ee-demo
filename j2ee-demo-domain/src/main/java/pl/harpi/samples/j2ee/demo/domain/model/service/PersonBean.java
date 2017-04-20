@@ -1,5 +1,6 @@
 package pl.harpi.samples.j2ee.demo.domain.model.service;
 
+import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
 import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
 import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
 import pl.harpi.samples.j2ee.demo.api.exceptions.ApplicationException;
@@ -9,7 +10,6 @@ import pl.harpi.samples.j2ee.demo.api.model.PersonLocal;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
 import pl.harpi.samples.j2ee.demo.domain.model.base.MessagesValidationNotificationHandler;
 import pl.harpi.samples.j2ee.demo.model.base.BaseRepository;
-import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
 import pl.harpi.samples.j2ee.demo.model.base.ValidationNotificationHandler;
 import pl.harpi.samples.j2ee.demo.model.entity.Person;
 import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;

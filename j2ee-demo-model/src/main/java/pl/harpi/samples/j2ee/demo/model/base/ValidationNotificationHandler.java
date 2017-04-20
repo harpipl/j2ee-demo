@@ -1,7 +1,5 @@
 package pl.harpi.samples.j2ee.demo.model.base;
 
-import pl.harpi.samples.j2ee.demo.api.base.model.Message;
-
 import java.util.List;
 
 public interface ValidationNotificationHandler<MESSAGE> {

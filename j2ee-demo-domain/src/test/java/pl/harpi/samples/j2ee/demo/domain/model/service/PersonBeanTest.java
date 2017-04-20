@@ -9,8 +9,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
 import pl.harpi.samples.j2ee.demo.api.model.PersonQueryProperty;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
-import pl.harpi.samples.j2ee.demo.model.repository.jpa.JPAPersonQuery;
 import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;
+import pl.harpi.samples.j2ee.demo.model.repository.jpa.JPAPersonQuery;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
