@@ -14,6 +14,7 @@
         <module>j2ee-demo-service</module>
         <module>j2ee-demo-ear</module>
         <module>j2ee-demo-model</module>
+        <module>j2ee-demo-docker</module>
     </modules>
 
     <properties>
@@ -183,6 +184,12 @@
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.0.2.Final</version>
+                <configuration>
+                    <hostname>dell3d-vm</hostname>
+                    <port>9990</port>
+                    <username>admin</username>
+                    <password>qwer1234</password>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

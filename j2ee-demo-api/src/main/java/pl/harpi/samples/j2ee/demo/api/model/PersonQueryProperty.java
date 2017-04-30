@@ -18,6 +18,7 @@ public class PersonQueryProperty implements QueryProperty {
     private String name;
 
     public PersonQueryProperty(String name) {
+        properties.put(name, this);
         this.name = name;
     }
 
