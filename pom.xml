@@ -15,6 +15,7 @@
         <module>j2ee-demo-ear</module>
         <module>j2ee-demo-model</module>
         <module>j2ee-demo-docker</module>
+        <module>j2ee-demo-web</module>
     </modules>
 
     <properties>
@@ -44,6 +45,12 @@
             <dependency>
                 <groupId>pl.harpi.samples</groupId>
                 <artifactId>j2ee-demo-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>pl.harpi.samples</groupId>
+                <artifactId>j2ee-demo-web</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <type>war</type>
             </dependency>
@@ -143,6 +150,26 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-server</artifactId>
+                <version>8.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-push</artifactId>
+                <version>8.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-client-compiled</artifactId>
+                <version>8.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-themes</artifactId>
+                <version>8.0.5</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.arquillian.extension</groupId>
