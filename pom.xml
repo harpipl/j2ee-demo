@@ -10,12 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>j2ee-demo-api</module>
-        <module>j2ee-demo-domain</module>
-        <module>j2ee-demo-service</module>
         <module>j2ee-demo-ear</module>
-        <module>j2ee-demo-model</module>
         <module>j2ee-demo-docker</module>
-        <module>j2ee-demo-web</module>
+        <module>j2ee-demo-app</module>
     </modules>
 
     <properties>
@@ -32,27 +29,29 @@
             </dependency>
             <dependency>
                 <groupId>pl.harpi.samples</groupId>
-                <artifactId>j2ee-demo-domain</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <type>ejb</type>
-            </dependency>
-            <dependency>
-                <groupId>pl.harpi.samples</groupId>
-                <artifactId>j2ee-demo-model</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <type>ejb</type>
-            </dependency>
-            <dependency>
-                <groupId>pl.harpi.samples</groupId>
-                <artifactId>j2ee-demo-service</artifactId>
+                <artifactId>j2ee-demo-app</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <type>war</type>
             </dependency>
             <dependency>
-                <groupId>pl.harpi.samples</groupId>
-                <artifactId>j2ee-demo-web</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <type>war</type>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-server</artifactId>
+                <version>8.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-push</artifactId>
+                <version>8.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-client-compiled</artifactId>
+                <version>8.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-themes</artifactId>
+                <version>8.0.5</version>
             </dependency>
             <dependency>
                 <groupId>javax</groupId>
@@ -152,26 +151,6 @@
                 <version>2.5</version>
             </dependency>
             <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-server</artifactId>
-                <version>8.0.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-push</artifactId>
-                <version>8.0.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-client-compiled</artifactId>
-                <version>8.0.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-themes</artifactId>
-                <version>8.0.5</version>
-            </dependency>
-            <dependency>
                 <groupId>org.jboss.arquillian.extension</groupId>
                 <artifactId>arquillian-transaction-api</artifactId>
                 <version>1.0.3.Final</version>
@@ -241,12 +220,12 @@
                 <version>2.10.1</version>
                 <configuration>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
-                    <modules>
-                        <ejbModule>
-                            <groupId>pl.harpi.samples</groupId>
-                            <artifactId>j2ee-demo-domain</artifactId>
-                        </ejbModule>
-                    </modules>
+                    <!--<modules>-->
+                        <!--<ejbModule>-->
+                            <!--<groupId>pl.harpi.samples</groupId>-->
+                            <!--<artifactId>j2ee-demo-app</artifactId>-->
+                        <!--</ejbModule>-->
+                    <!--</modules>-->
                 </configuration>
             </plugin>
         </plugins>
