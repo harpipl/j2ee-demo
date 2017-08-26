@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.lang.reflect.ParameterizedType;
 
-public abstract class JPABaseRepository<ENTITY extends BaseEntity, SEARCH> implements BaseRepository<ENTITY, SEARCH> {
+public abstract class JPABaseRepository<ENTITY extends BaseEntity> implements BaseRepository<ENTITY> {
     @PersistenceContext
     private EntityManager entityManager;
     private final Class<ENTITY> entityClass;
