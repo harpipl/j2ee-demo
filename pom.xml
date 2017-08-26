@@ -191,7 +191,7 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.0.2.Final</version>
                 <configuration>
-                    <hostname>dell3d-vm</hostname>
+                    <hostname>localhost</hostname>
                     <port>9990</port>
                     <username>admin</username>
                     <password>qwer1234</password>

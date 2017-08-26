@@ -16,6 +16,10 @@ import static pl.harpi.samples.j2ee.demo.model.base.BaseRepository.INFINITE_MAX_
 public abstract class BaseQuery<ENTITY extends Serializable, SEARCH> implements Query<ENTITY, SEARCH> {
     private EntityManager entityManager;
 
+    public BaseQuery(EntityManager entityManager) {
+        this.setEntityManager(entityManager);
+    }
+
     @Override
     public DataResult search(SEARCH findVO, QueryProperty sort, OrderType order) {
         return searchPage(findVO, 0, INFINITE_MAX_RESULT_SIZE, sort, order);
@@ -64,5 +68,13 @@ public abstract class BaseQuery<ENTITY extends Serializable, SEARCH> implements 
         if (total == null) total = 0L;
 
         return total;
+    }
+
+    protected EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    private void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 }

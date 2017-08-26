@@ -11,10 +11,8 @@ import pl.harpi.samples.j2ee.demo.model.entity.Person;
 import javax.persistence.EntityManager;
 
 public class JPAPersonQuery extends BaseQuery<Person, PersonSearchVO> implements Query<Person, PersonSearchVO> {
-    private EntityManager entityManager;
-
     public JPAPersonQuery(EntityManager entityManager) {
-        this.setEntityManager(entityManager);
+        super(entityManager);
     }
 
     @Override
@@ -60,13 +58,5 @@ public class JPAPersonQuery extends BaseQuery<Person, PersonSearchVO> implements
         }
 
         return query;
-    }
-
-    protected EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    protected void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
     }
 }
