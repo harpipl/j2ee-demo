@@ -89,5 +89,48 @@
             <artifactId>resteasy-multipart-provider</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <finalName>j2ee-demo-app</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>3.1.5</version>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <springmvc>false</springmvc>
+                            <locations>
+                                <location>pl.harpi.samples.j2ee.demo.api.base.model</location>
+                                <location>pl.harpi.samples.j2ee.demo.service.rest.repository</location>
+                            </locations>
+                            <schemes>http</schemes>
+                            <host>localhost:8080</host>
+                            <basePath>/j2ee-demo-app</basePath>
+                            <info>
+                                <title>J2EE-DEMO-APP</title>
+                                <version>v1</version>
+                            </info>
+                            <swaggerDirectory>${project.build.directory}/${project.build.finalName}/apidocs</swaggerDirectory>
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

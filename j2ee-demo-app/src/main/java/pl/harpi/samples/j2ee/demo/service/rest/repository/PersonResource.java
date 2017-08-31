@@ -1,5 +1,8 @@
 package pl.harpi.samples.j2ee.demo.service.rest.repository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import pl.harpi.samples.j2ee.base.service.rest.BaseResource;
 import pl.harpi.samples.j2ee.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
@@ -20,13 +23,19 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/v1/repository/persons")
+@Api(value = "PersonResource")
 public class PersonResource extends BaseResource {
     @Inject
     private PersonLocal personService;
 
     @GET
     @Path("/{personId}")
-    public Response getPerson(@PathParam("personId") String personId) {
+    @ApiOperation(value = "Finds person by ID",
+            notes = "Retreves person identified by ID",
+            response = PersonResponse.class)
+    public Response getPerson(
+            @ApiParam(value = "Person identifier", required = true) @PathParam("personId") String personId
+    ) {
         try {
             PersonDTO person = personService.getPersonById(Long.valueOf(personId));
             return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponse(person, this.getHttpRequest())).build();
@@ -36,7 +45,17 @@ public class PersonResource extends BaseResource {
     }
 
     @GET
-    public Response getPersons(@QueryParam("start") Integer paramStart, @QueryParam("size") Integer paramSize, @QueryParam("sort") String sort, @QueryParam("order") OrderType order) {
+    @ApiOperation(value = "Finds persons",
+            notes = "Retreves persons",
+            response = PersonCollectionResponse.class,
+            responseContainer = "List"
+    )
+    public Response getPersons(
+            @ApiParam(value = "Start", required = true) @QueryParam("start") Integer paramStart,
+            @ApiParam(value = "Size", required = true) @QueryParam("size") Integer paramSize,
+            @ApiParam(value = "Sort", required = true) @QueryParam("sort") String sort,
+            @ApiParam(value = "Order", required = true) @QueryParam("order") OrderType order
+    ) {
         int start = (paramStart == null) ? ResourceConstants.PAGING_DEFAULT_START : paramStart;
         int size = (paramSize == null) ? ResourceConstants.PAGING_DEFAULT_SIZE : paramSize;
 
@@ -50,7 +69,12 @@ public class PersonResource extends BaseResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createPerson(PersonRequest personRequest) {
+    @ApiOperation(value = "Creates person",
+            notes = "Creates person from given input"
+    )
+    public Response createPerson(
+            @ApiParam(value = "Person", required = true) PersonRequest personRequest
+    ) {
         PersonDTO person = new PersonDTOBuilder()
                 .withFirstName(personRequest.getFirstName())
                 .withLastName(personRequest.getLastName())
