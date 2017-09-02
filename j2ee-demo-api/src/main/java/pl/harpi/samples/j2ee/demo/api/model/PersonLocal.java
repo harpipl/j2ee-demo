@@ -7,8 +7,10 @@ import pl.harpi.samples.j2ee.demo.api.exceptions.ApplicationException;
 
 public interface PersonLocal {
     PersonDTO savePerson(PersonDTO person) throws ApplicationException;
+
     PersonDTO getPersonById(Long personId) throws ApplicationException;
 
     DataResult getPersons(PersonSearchVO findVO, QueryProperty sort, OrderType order);
+
     DataResult getPersons(PersonSearchVO findVO, int start, int size, QueryProperty sort, OrderType order);
 }

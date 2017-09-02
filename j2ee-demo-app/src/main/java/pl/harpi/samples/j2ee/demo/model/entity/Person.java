@@ -20,7 +20,8 @@ public class Person extends BaseEntity implements Serializable, DTOCreatable<Per
     @Column(name = "LAST_NAME", length = 240, nullable = false)
     private String lastName;
 
-    protected Person() {}
+    protected Person() {
+    }
 
     public Person(PersonDTO dto) {
         super(dto.getId(), null);
@@ -45,10 +46,16 @@ public class Person extends BaseEntity implements Serializable, DTOCreatable<Per
     String getFirstName() {
         return firstName;
     }
-    private void setFirstName(String firstName) { this.firstName = firstName; }
+
+    private void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     String getLastName() {
         return lastName;
     }
-    private void setLastName(String lastName) { this.lastName = lastName; }
+
+    private void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

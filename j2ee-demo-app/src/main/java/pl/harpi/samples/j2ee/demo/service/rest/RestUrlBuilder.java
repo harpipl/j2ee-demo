@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.MessageFormat;
 
 public class RestUrlBuilder {
-    public static String buildUrl(HttpServletRequest request, String fragments[], Object ... arguments) {
+    public static String buildUrl(HttpServletRequest request, String fragments[], Object... arguments) {
         String url = (request.isSecure()) ? "https" : "http";
         url += "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + request.getServletPath();
 

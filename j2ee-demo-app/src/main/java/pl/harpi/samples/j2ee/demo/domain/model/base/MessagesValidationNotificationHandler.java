@@ -11,6 +11,7 @@ public class MessagesValidationNotificationHandler implements ValidationNotifica
     private boolean hasErrors = false;
 
     private List<Message> messages = new ArrayList<>();
+
     @Override
     public void handleError(String message, Object object) {
         hasErrors = true;

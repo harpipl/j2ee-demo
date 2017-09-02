@@ -7,9 +7,11 @@ public class ApplicationException extends Exception {
         super(message);
         this.object = object;
     }
+
     public ApplicationException(String message) {
         this(message, null);
     }
+
     public ApplicationException(Object object) {
         this(null, object);
     }

@@ -1,6 +1,5 @@
 package pl.harpi.samples.j2ee.demo.model.repository.jpa;
 
-import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
 import pl.harpi.samples.j2ee.demo.model.base.JPABaseRepository;
 import pl.harpi.samples.j2ee.demo.model.entity.Person;
 import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;

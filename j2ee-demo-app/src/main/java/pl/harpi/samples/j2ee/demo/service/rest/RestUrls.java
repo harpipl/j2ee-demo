@@ -1,7 +1,8 @@
 package pl.harpi.samples.j2ee.demo.service.rest;
 
 public final class RestUrls {
-    private RestUrls() {}
+    private RestUrls() {
+    }
 
     private static final String SEGMENT_VERSION_1 = "v1";
 
