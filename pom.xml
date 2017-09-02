@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -226,10 +226,10 @@
                 <configuration>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <!--<modules>-->
-                        <!--<ejbModule>-->
-                            <!--<groupId>pl.harpi.samples</groupId>-->
-                            <!--<artifactId>j2ee-demo-app</artifactId>-->
-                        <!--</ejbModule>-->
+                    <!--<ejbModule>-->
+                    <!--<groupId>pl.harpi.samples</groupId>-->
+                    <!--<artifactId>j2ee-demo-app</artifactId>-->
+                    <!--</ejbModule>-->
                     <!--</modules>-->
                 </configuration>
             </plugin>

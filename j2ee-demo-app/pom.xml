@@ -118,7 +118,8 @@
                                 <title>J2EE-DEMO-APP</title>
                                 <version>v1</version>
                             </info>
-                            <swaggerDirectory>${project.build.directory}/${project.build.finalName}/apidocs</swaggerDirectory>
+                            <swaggerDirectory>${project.build.directory}/${project.build.finalName}/apidocs
+                            </swaggerDirectory>
                         </apiSource>
                     </apiSources>
                 </configuration>

@@ -1,23 +1,17 @@
 package pl.harpi.samples.j2ee.demo.web.main;
 
-import com.vaadin.external.org.slf4j.Logger;
-import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.ui.*;
-import pl.harpi.samples.j2ee.demo.web.domain.Person;
 import pl.harpi.samples.j2ee.demo.web.domain.PersonRequest;
 
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 /**
  * Created by arkad on 09.05.2017.
  */
 public class WindowModalNewPerson extends Window {
-    Logger log = LoggerFactory.getLogger(WindowModalNewPerson.class);
-
     private MainUI parentUI;
     private TextField txfFirstName = new TextField("First name:");
     private TextField txfLastName = new TextField("Last name:");
@@ -42,15 +36,13 @@ public class WindowModalNewPerson extends Window {
 
             WebTarget targetPostPerson = ClientBuilder.newClient().target("http://localhost:8080/j2ee-demo-app/rest/v1/repository/persons");
 
-            Response response = targetPostPerson.request(MediaType.APPLICATION_JSON).post(Entity.entity(person, MediaType.APPLICATION_JSON));
+            targetPostPerson.request(MediaType.APPLICATION_JSON).post(Entity.entity(person, MediaType.APPLICATION_JSON));
 
             this.close();
-            parentUI.updateList();
+            this.parentUI.updateList();
         });
 
-        btnCancel.addClickListener(e -> {
-            this.close();
-        });
+        btnCancel.addClickListener(e -> this.close());
 
         bottomToolbar.addComponents(btnSave, btnCancel);
 
@@ -63,5 +55,23 @@ public class WindowModalNewPerson extends Window {
         this.setContent(layout);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
+        WindowModalNewPerson that = (WindowModalNewPerson) o;
+
+        if (txfFirstName != null ? !txfFirstName.equals(that.txfFirstName) : that.txfFirstName != null) return false;
+        return txfLastName != null ? txfLastName.equals(that.txfLastName) : that.txfLastName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (txfFirstName != null ? txfFirstName.hashCode() : 0);
+        result = 31 * result + (txfLastName != null ? txfLastName.hashCode() : 0);
+        return result;
+    }
 }
