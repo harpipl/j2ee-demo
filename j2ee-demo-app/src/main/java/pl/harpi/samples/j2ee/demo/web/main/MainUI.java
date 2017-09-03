@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class MainUI extends UI {
     private Grid<Person> grid = new Grid<>(Person.class);
-    private List<Person> persons = new ArrayList<>();
+    private transient List<Person> persons = new ArrayList<>();
 
     public List<Person> getPersons() {
         if (persons == null) {
@@ -33,14 +33,10 @@ public class MainUI extends UI {
         VerticalLayout layout = new VerticalLayout();
 
         Button btnNewPerson = new Button("Add new person");
-        btnNewPerson.addClickListener(e -> {
-            this.addWindow(new WindowModalNewPerson(this));
-        });
+        btnNewPerson.addClickListener(e -> this.addWindow(new WindowModalNewPerson(this)));
 
         Button btnRefresh = new Button("Refresh");
-        btnRefresh.addClickListener(e -> {
-            this.updateList();
-        });
+        btnRefresh.addClickListener(e -> this.updateList());
 
         HorizontalLayout toolbar = new HorizontalLayout(btnNewPerson, btnRefresh);
 
@@ -72,5 +68,25 @@ public class MainUI extends UI {
     @WebServlet(urlPatterns = "/*", name = "MainUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MainUI.class, productionMode = false)
     public static class MainUIServlet extends VaadinServlet {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        MainUI that = (MainUI) o;
+
+        if (grid != null ? !grid.equals(that.grid) : that.grid != null) return false;
+        return persons != null ? persons.equals(that.persons) : that.persons == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (grid != null ? grid.hashCode() : 0);
+        result = 31 * result + (persons != null ? persons.hashCode() : 0);
+        return result;
     }
 }

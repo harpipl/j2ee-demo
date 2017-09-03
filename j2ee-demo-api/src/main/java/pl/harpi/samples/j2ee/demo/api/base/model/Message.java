@@ -2,17 +2,17 @@ package pl.harpi.samples.j2ee.demo.api.base.model;
 
 public class Message {
     private MessageType type;
-    private String message;
+    private String text;
     private Object object;
 
-    public Message(MessageType type, String message, Object object) {
+    public Message(MessageType type, String text, Object object) {
         this.setType(type);
-        this.setMessage(message);
+        this.setText(text);
         this.setObject(object);
     }
 
-    public Message(MessageType type, String message) {
-        this(type, message, null);
+    public Message(MessageType type, String text) {
+        this(type, text, null);
     }
 
     public MessageType getType() {
@@ -23,12 +23,12 @@ public class Message {
         this.type = type;
     }
 
-    public String getMessage() {
-        return message;
+    public String getText() {
+        return text;
     }
 
-    private void setMessage(String message) {
-        this.message = message;
+    private void setText(String text) {
+        this.text = text;
     }
 
     private void setObject(Object object) {

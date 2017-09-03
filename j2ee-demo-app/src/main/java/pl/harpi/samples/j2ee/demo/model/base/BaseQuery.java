@@ -1,5 +1,6 @@
 package pl.harpi.samples.j2ee.demo.model.base;
 
+import pl.harpi.samples.j2ee.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
 import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
 import pl.harpi.samples.j2ee.demo.api.base.model.Query;
@@ -11,9 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static pl.harpi.samples.j2ee.demo.model.base.BaseRepository.INFINITE_MAX_RESULT_SIZE;
-
-public abstract class BaseQuery<ENTITY extends Serializable, SEARCH> implements Query<ENTITY, SEARCH> {
+public abstract class BaseQuery<E extends Serializable, S> implements Query<E, S> {
     private EntityManager entityManager;
 
     public BaseQuery(EntityManager entityManager) {
@@ -21,22 +20,22 @@ public abstract class BaseQuery<ENTITY extends Serializable, SEARCH> implements 
     }
 
     @Override
-    public DataResult search(SEARCH findVO, QueryProperty sort, OrderType order) {
-        return searchPage(findVO, 0, INFINITE_MAX_RESULT_SIZE, sort, order);
+    public DataResult search(S findVO, QueryProperty sort, OrderType order) {
+        return searchPage(findVO, 0, ResourceConstants.INFINITE_MAX_RESULT_SIZE, sort, order);
     }
 
     @Override
-    public DataResult searchIdsPage(SEARCH findVO, int start, int size, OrderType order) {
+    public DataResult searchIdsPage(S findVO, int start, int size, OrderType order) {
         return null;
     }
 
     @Override
-    public ENTITY singleResult() {
+    public E singleResult() {
         return null;
     }
 
     @Override
-    public DataResult searchIds(SEARCH findVO, OrderType order) {
+    public DataResult searchIds(S findVO, OrderType order) {
         DataResult docList = search(findVO, null, order);
         List<Object> list = new ArrayList<>();
 
@@ -50,7 +49,7 @@ public abstract class BaseQuery<ENTITY extends Serializable, SEARCH> implements 
     }
 
     @Override
-    public DataResult searchPage(SEARCH findVO, int start, int size, QueryProperty sort, OrderType order) {
+    public DataResult searchPage(S findVO, int start, int size, QueryProperty sort, OrderType order) {
         javax.persistence.Query query = prepareQuery(findVO, start, size, sort, order, false);
 
         List<Object> results = query.getResultList();
@@ -59,9 +58,9 @@ public abstract class BaseQuery<ENTITY extends Serializable, SEARCH> implements 
         return new DataResult(0L, results.size(), sort, order, total, results);
     }
 
-    protected abstract javax.persistence.Query prepareQuery(SEARCH findVO, int start, int size, QueryProperty sort, OrderType order, boolean count);
+    protected abstract javax.persistence.Query prepareQuery(S findVO, int start, int size, QueryProperty sort, OrderType order, boolean count);
 
-    private long countTotal(SEARCH findVO, int start, int size) {
+    private long countTotal(S findVO, int start, int size) {
         javax.persistence.Query query = prepareQuery(findVO, start, size, PersonQueryProperty.SORT_BY_DEFAULT, PersonQueryProperty.ORDER_BY_DEFAULT, true);
 
         Long total = (Long) query.getSingleResult();

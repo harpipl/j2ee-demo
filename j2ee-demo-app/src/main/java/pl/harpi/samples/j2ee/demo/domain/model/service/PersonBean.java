@@ -1,5 +1,6 @@
 package pl.harpi.samples.j2ee.demo.domain.model.service;
 
+import pl.harpi.samples.j2ee.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
 import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
 import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
@@ -9,7 +10,6 @@ import pl.harpi.samples.j2ee.demo.api.model.PersonDTO;
 import pl.harpi.samples.j2ee.demo.api.model.PersonLocal;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
 import pl.harpi.samples.j2ee.demo.domain.model.base.MessagesValidationNotificationHandler;
-import pl.harpi.samples.j2ee.demo.model.base.BaseRepository;
 import pl.harpi.samples.j2ee.demo.model.base.ValidationNotificationHandler;
 import pl.harpi.samples.j2ee.demo.model.entity.Person;
 import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;
@@ -52,7 +52,7 @@ public class PersonBean implements PersonLocal {
 
     @Override
     public DataResult getPersons(PersonSearchVO findVO, QueryProperty sort, OrderType order) {
-        return getPersons(findVO, 0, BaseRepository.INFINITE_MAX_RESULT_SIZE, sort, order);
+        return getPersons(findVO, 0, ResourceConstants.INFINITE_MAX_RESULT_SIZE, sort, order);
     }
 
     @Override
@@ -61,14 +61,14 @@ public class PersonBean implements PersonLocal {
 
         DataResult result = null;
         DataResult search = repository.createPersonQuery().searchPage(findVO, start, size, sort, order);
+        List objects = null;
         if (search != null && search.getData() != null) {
             List<Object> persons = (List<Object>) search.getData();
             persons.forEach(p -> personDTOs.add(((Person) p).createDTO()));
-
-            List objects = (List) (personDTOs);
+            objects = personDTOs;
             result = new DataResult(search.getStart(), search.getSize(), search.getSort(), search.getOrder(), search.getTotal(), objects);
         } else {
-            List objects = (List) (personDTOs);
+            objects = personDTOs;
             result = new DataResult(0, 0, sort, order, 0, objects);
         }
 

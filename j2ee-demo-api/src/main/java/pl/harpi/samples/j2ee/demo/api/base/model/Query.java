@@ -2,14 +2,14 @@ package pl.harpi.samples.j2ee.demo.api.base.model;
 
 import java.io.Serializable;
 
-public interface Query<ENTITY extends Serializable, SEARCH> {
-    DataResult search(SEARCH findVO, QueryProperty sort, OrderType order);
+public interface Query<E extends Serializable, S> {
+    DataResult search(S findVO, QueryProperty sort, OrderType order);
 
-    DataResult searchIds(SEARCH findVO, OrderType order);
+    DataResult searchIds(S findVO, OrderType order);
 
-    DataResult searchPage(SEARCH findVO, int start, int size, QueryProperty sort, OrderType order);
+    DataResult searchPage(S findVO, int start, int size, QueryProperty sort, OrderType order);
 
-    DataResult searchIdsPage(SEARCH findVO, int start, int size, OrderType order);
+    DataResult searchIdsPage(S findVO, int start, int size, OrderType order);
 
-    ENTITY singleResult();
+    E singleResult();
 }

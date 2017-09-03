@@ -4,30 +4,30 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.lang.reflect.ParameterizedType;
 
-public abstract class JPABaseRepository<ENTITY extends BaseEntity> implements BaseRepository<ENTITY> {
+public abstract class JPABaseRepository<E extends BaseEntity> implements BaseRepository<E> {
     @PersistenceContext
     private EntityManager entityManager;
-    private final Class<ENTITY> entityClass;
+    private final Class<E> entityClass;
 
     public JPABaseRepository() {
-        entityClass = (Class<ENTITY>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        entityClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
     protected EntityManager getEntityManager() {
         return entityManager;
     }
 
-    private Class<ENTITY> getEntityClass() {
+    private Class<E> getEntityClass() {
         return entityClass;
     }
 
     @Override
-    public ENTITY load(Long id) {
+    public E load(Long id) {
         return getEntityManager().find(getEntityClass(), id);
     }
 
     @Override
-    public void save(ENTITY entity) {
+    public void save(E entity) {
         if (entity.getId() == null) {
             getEntityManager().persist(entity);
         } else {

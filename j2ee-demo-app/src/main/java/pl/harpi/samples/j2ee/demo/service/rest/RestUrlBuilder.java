@@ -4,16 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.MessageFormat;
 
 public class RestUrlBuilder {
-    public static String buildUrl(HttpServletRequest request, String fragments[], Object... arguments) {
-        String url = (request.isSecure()) ? "https" : "http";
-        url += "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + request.getServletPath();
+    private RestUrlBuilder() {
+    }
+
+    public static String buildUrl(HttpServletRequest request, String[] fragments, Object... arguments) {
+        StringBuilder url = new StringBuilder(request.isSecure() ? "https" : "http");
+        url.append("://").append(request.getServerName()).append(":").append(request.getServerPort()).append(request.getContextPath()).append(request.getServletPath());
 
         for (String f : fragments) {
-            url += "/" + f;
+            url.append("/").append(f);
         }
 
-        url = MessageFormat.format(url, arguments);
+        url = new StringBuilder(MessageFormat.format(url.toString(), arguments));
 
-        return url;
+        return url.toString();
     }
 }

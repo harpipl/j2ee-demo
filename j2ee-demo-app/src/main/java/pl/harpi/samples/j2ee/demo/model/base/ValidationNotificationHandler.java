@@ -2,8 +2,8 @@ package pl.harpi.samples.j2ee.demo.model.base;
 
 import java.util.List;
 
-public interface ValidationNotificationHandler<MESSAGE> {
-    List<MESSAGE> getMessages();
+public interface ValidationNotificationHandler<M> {
+    List<M> getMessages();
 
     void handleError(String message);
 

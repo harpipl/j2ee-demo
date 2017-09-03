@@ -1,11 +1,11 @@
 package pl.harpi.samples.j2ee.demo.model.repository.jpa;
 
+import pl.harpi.samples.j2ee.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
 import pl.harpi.samples.j2ee.demo.api.base.model.Query;
 import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
 import pl.harpi.samples.j2ee.demo.model.base.BaseQuery;
-import pl.harpi.samples.j2ee.demo.model.base.BaseRepository;
 import pl.harpi.samples.j2ee.demo.model.entity.Person;
 
 import javax.persistence.EntityManager;
@@ -52,7 +52,7 @@ public class JPAPersonQuery extends BaseQuery<Person, PersonSearchVO> implements
 
         if (!count) {
             query.setFirstResult(start);
-            if (BaseRepository.INFINITE_MAX_RESULT_SIZE != size) {
+            if (ResourceConstants.INFINITE_MAX_RESULT_SIZE != size) {
                 query.setMaxResults(size);
             }
         }

@@ -25,8 +25,6 @@ public abstract class BaseEntity implements Serializable {
     public void validate(ValidationNotificationHandler handler) {
     }
 
-    ;
-
     public Long getId() {
         return id;
     }

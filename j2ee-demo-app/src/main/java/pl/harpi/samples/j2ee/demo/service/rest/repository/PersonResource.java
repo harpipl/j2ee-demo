@@ -60,9 +60,8 @@ public class PersonResource extends BaseResource {
         int size = (paramSize == null) ? ResourceConstants.PAGING_DEFAULT_SIZE : paramSize;
 
         QueryProperty sortBy = (sort == null) ? PersonQueryProperty.SORT_BY_DEFAULT : PersonQueryProperty.findByName(sort);
-        order = (order == null) ? PersonQueryProperty.ORDER_BY_DEFAULT : order;
 
-        DataResult dataResult = personService.getPersons(new PersonSearchVO(), start, size, sortBy, order);
+        DataResult dataResult = personService.getPersons(new PersonSearchVO(), start, size, sortBy, (order == null) ? PersonQueryProperty.ORDER_BY_DEFAULT : order);
 
         return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponseList(dataResult, this.getHttpRequest())).build();
     }
