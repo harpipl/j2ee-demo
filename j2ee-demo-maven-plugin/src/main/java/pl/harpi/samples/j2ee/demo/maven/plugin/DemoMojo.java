@@ -1,19 +1,15 @@
 package pl.harpi.samples.j2ee.demo.maven.plugin;
 
-import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Mojo;
-import org.apache.maven.project.MavenProject;
+import org.apache.maven.plugins.annotations.Parameter;
 
 @Mojo(name = "hello")
-public class DemoMojo extends AbstractMojo {
-    @Component
-    MavenProject project;
+public class DemoMojo extends AbstractDemoMojo {
+    @Parameter(defaultValue = "demo-report", property = "outputName", required = true)
+    private String outputName;
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        getLog().info(project.getName());
+    public String getOutputName() {
+        return outputName;
     }
 }
