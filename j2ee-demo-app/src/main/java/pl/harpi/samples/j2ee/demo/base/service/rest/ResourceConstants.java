@@ -1,4 +1,4 @@
-package pl.harpi.samples.j2ee.base.service.rest;
+package pl.harpi.samples.j2ee.demo.base.service.rest;
 
 public class ResourceConstants {
     private ResourceConstants() {

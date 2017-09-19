@@ -1,4 +1,4 @@
-package pl.harpi.samples.j2ee.base.service.rest;
+package pl.harpi.samples.j2ee.demo.base.service.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

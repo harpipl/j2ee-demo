@@ -1,6 +1,6 @@
 package pl.harpi.samples.j2ee.demo.model.repository.jpa;
 
-import pl.harpi.samples.j2ee.base.service.rest.ResourceConstants;
+import pl.harpi.samples.j2ee.demo.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
 import pl.harpi.samples.j2ee.demo.api.base.model.Query;
 import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
