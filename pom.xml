@@ -13,7 +13,6 @@
         <module>j2ee-demo-ear</module>
         <module>j2ee-demo-docker</module>
         <module>j2ee-demo-app</module>
-        <module>j2ee-demo-maven-plugin</module>
     </modules>
 
     <properties>
@@ -226,19 +225,6 @@
                 <configuration>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>pl.harpi.samples</groupId>
-                <artifactId>j2ee-demo-maven-plugin</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>hello</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
