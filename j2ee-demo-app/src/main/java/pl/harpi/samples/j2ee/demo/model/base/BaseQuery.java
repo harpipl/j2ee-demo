@@ -1,11 +1,11 @@
 package pl.harpi.samples.j2ee.demo.model.base;
 
-import pl.harpi.samples.j2ee.demo.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
 import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
 import pl.harpi.samples.j2ee.demo.api.base.model.Query;
 import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
 import pl.harpi.samples.j2ee.demo.api.model.PersonQueryProperty;
+import pl.harpi.samples.j2ee.demo.base.service.rest.ResourceConstants;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;

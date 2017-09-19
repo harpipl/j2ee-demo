@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
+import pl.harpi.samples.j2ee.demo.api.exceptions.ApplicationException;
 import pl.harpi.samples.j2ee.demo.api.model.PersonQueryProperty;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
 import pl.harpi.samples.j2ee.demo.model.repository.PersonRepository;
@@ -31,7 +32,7 @@ public class PersonBeanTest {
     private PersonRepository repository;
 
     @Test
-    public void search_withAllPersons_shouldReturnFourPersons() {
+    public void search_withAllPersons_shouldReturnFourPersons() throws ApplicationException {
         // given
         Query query = Mockito.mock(Query.class);
 
@@ -50,7 +51,7 @@ public class PersonBeanTest {
     }
 
     @Test
-    public void search_withStartTwoAndSizeOne_shouldReturnOnlyDavid() {
+    public void search_withStartTwoAndSizeOne_shouldReturnOnlyDavid() throws ApplicationException {
         // given
         Query query = Mockito.mock(Query.class);
 

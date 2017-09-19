@@ -3,13 +3,13 @@ package pl.harpi.samples.j2ee.demo.service.rest.repository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import pl.harpi.samples.j2ee.demo.base.service.rest.BaseResource;
-import pl.harpi.samples.j2ee.demo.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.base.model.DataResult;
 import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
 import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
 import pl.harpi.samples.j2ee.demo.api.exceptions.ApplicationException;
 import pl.harpi.samples.j2ee.demo.api.model.*;
+import pl.harpi.samples.j2ee.demo.base.service.rest.BaseResource;
+import pl.harpi.samples.j2ee.demo.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.service.rest.RestResponseFactory;
 
 import javax.ejb.EJBException;
@@ -61,7 +61,12 @@ public class PersonResource extends BaseResource {
 
         QueryProperty sortBy = (sort == null) ? PersonQueryProperty.SORT_BY_DEFAULT : PersonQueryProperty.findByName(sort);
 
-        DataResult dataResult = personService.getPersons(new PersonSearchVO(), start, size, sortBy, (order == null) ? PersonQueryProperty.ORDER_BY_DEFAULT : order);
+        DataResult dataResult;
+        try {
+            dataResult = personService.getPersons(new PersonSearchVO(), start, size, sortBy, (order == null) ? PersonQueryProperty.ORDER_BY_DEFAULT : order);
+        } catch (ApplicationException e) {
+            return Response.status(Response.Status.CONFLICT).build();
+        }
 
         return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponseList(dataResult, this.getHttpRequest())).build();
     }

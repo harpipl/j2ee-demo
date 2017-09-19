@@ -1,10 +1,10 @@
 package pl.harpi.samples.j2ee.demo.model.repository.jpa;
 
-import pl.harpi.samples.j2ee.demo.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.api.base.model.OrderType;
 import pl.harpi.samples.j2ee.demo.api.base.model.Query;
 import pl.harpi.samples.j2ee.demo.api.base.model.QueryProperty;
 import pl.harpi.samples.j2ee.demo.api.model.PersonSearchVO;
+import pl.harpi.samples.j2ee.demo.base.service.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.model.base.BaseQuery;
 import pl.harpi.samples.j2ee.demo.model.entity.Person;
 
