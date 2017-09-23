@@ -9,10 +9,12 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>j2ee-demo-api</module>
-        <module>j2ee-demo-ear</module>
-        <module>j2ee-demo-docker</module>
-        <module>j2ee-demo-app</module>
+        <module>j2ee-demo-person-ear</module>
+        <module>j2ee-demo-person-docker</module>
+        <module>j2ee-demo-person-api</module>
+        <module>j2ee-demo-person-app</module>
+        <module>j2ee-demo-common-api</module>
+        <module>j2ee-demo-common-app</module>
     </modules>
 
     <properties>
@@ -24,12 +26,22 @@
         <dependencies>
             <dependency>
                 <groupId>pl.harpi.samples</groupId>
-                <artifactId>j2ee-demo-api</artifactId>
+                <artifactId>j2ee-demo-common-api</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>pl.harpi.samples</groupId>
-                <artifactId>j2ee-demo-app</artifactId>
+                <artifactId>j2ee-demo-common-app</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>pl.harpi.samples</groupId>
+                <artifactId>j2ee-demo-person-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>pl.harpi.samples</groupId>
+                <artifactId>j2ee-demo-person-app</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <type>war</type>
             </dependency>

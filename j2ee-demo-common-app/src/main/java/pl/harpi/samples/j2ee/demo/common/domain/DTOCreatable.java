@@ -1,0 +1,5 @@
+package pl.harpi.samples.j2ee.demo.common.domain;
+
+public interface DTOCreatable<T> {
+    T createDTO();
+}
