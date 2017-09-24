@@ -33,7 +33,7 @@ public class WindowModalNewPerson extends Window {
             person.setFirstName(txfFirstName.getValue());
             person.setLastName(txfLastName.getValue());
 
-            WebTarget targetPostPerson = ClientBuilder.newClient().target("http://localhost:8080/j2ee-demo-app/rest/v1/repository/persons");
+            WebTarget targetPostPerson = ClientBuilder.newClient().target("http://localhost:8080/j2ee-demo-person-app/rest/v1/repository/persons");
 
             targetPostPerson.request(MediaType.APPLICATION_JSON).post(Entity.entity(person, MediaType.APPLICATION_JSON));
 

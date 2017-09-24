@@ -50,7 +50,7 @@ public class MainUI extends UI {
     }
 
     void updateList() {
-        WebTarget targetGetPersons = ClientBuilder.newClient().target("http://localhost:8080/j2ee-demo-app/rest/v1/repository/persons?sort=id");
+        WebTarget targetGetPersons = ClientBuilder.newClient().target("http://localhost:8080/j2ee-demo-person-app/rest/v1/repository/persons?sort=id");
 
         PersonResponse response = targetGetPersons.request(MediaType.APPLICATION_JSON_TYPE).get(PersonResponse.class);
 

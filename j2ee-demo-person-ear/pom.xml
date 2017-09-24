@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>j2ee-demo-ear</artifactId>
+    <artifactId>j2ee-demo-person-ear</artifactId>
 
     <packaging>ear</packaging>
 
