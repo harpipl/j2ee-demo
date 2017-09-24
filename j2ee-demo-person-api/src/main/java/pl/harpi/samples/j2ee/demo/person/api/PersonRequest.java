@@ -1,4 +1,4 @@
-package pl.harpi.samples.j2ee.demo.person.rest;
+package pl.harpi.samples.j2ee.demo.person.api;
 
 public class PersonRequest {
     private String firstName;

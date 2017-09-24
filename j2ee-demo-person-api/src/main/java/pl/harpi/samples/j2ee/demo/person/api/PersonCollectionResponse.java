@@ -1,9 +1,10 @@
-package pl.harpi.samples.j2ee.demo.person.rest;
+package pl.harpi.samples.j2ee.demo.person.api;
 
 import pl.harpi.samples.j2ee.demo.common.api.DataResult;
 import pl.harpi.samples.j2ee.demo.common.api.OrderType;
 import pl.harpi.samples.j2ee.demo.common.api.QueryProperty;
 import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
+import pl.harpi.samples.j2ee.demo.person.api.PersonResponse;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;

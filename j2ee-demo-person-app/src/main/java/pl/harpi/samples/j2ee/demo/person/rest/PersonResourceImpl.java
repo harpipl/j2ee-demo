@@ -1,24 +1,21 @@
 package pl.harpi.samples.j2ee.demo.person.rest;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import pl.harpi.samples.j2ee.demo.common.api.DataResult;
 import pl.harpi.samples.j2ee.demo.common.api.OrderType;
 import pl.harpi.samples.j2ee.demo.common.api.QueryProperty;
 import pl.harpi.samples.j2ee.demo.common.domain.ApplicationException;
 import pl.harpi.samples.j2ee.demo.common.rest.BaseResource;
 import pl.harpi.samples.j2ee.demo.common.rest.ResourceConstants;
-import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
-import pl.harpi.samples.j2ee.demo.person.api.PersonDTOBuilder;
-import pl.harpi.samples.j2ee.demo.person.api.PersonQueryProperty;
-import pl.harpi.samples.j2ee.demo.person.api.PersonSearchVO;
+import pl.harpi.samples.j2ee.demo.person.api.*;
 import pl.harpi.samples.j2ee.demo.person.domain.PersonLocal;
 
 import javax.ejb.EJBException;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -27,18 +24,11 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/v1/repository/persons")
 @Api(value = "PersonResource")
-public class PersonResource extends BaseResource {
+public class PersonResourceImpl extends BaseResource implements PersonResource {
     @Inject
     private PersonLocal personService;
 
-    @GET
-    @Path("/{personId}")
-    @ApiOperation(value = "Finds person by ID",
-            notes = "Retreves person identified by ID",
-            response = PersonResponse.class)
-    public Response getPerson(
-            @ApiParam(value = "Person identifier", required = true) @PathParam("personId") String personId
-    ) {
+    public Response getPerson(String personId) {
         try {
             PersonDTO person = personService.getPersonById(Long.valueOf(personId));
             return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponse(person, this.getHttpRequest())).build();
@@ -47,18 +37,7 @@ public class PersonResource extends BaseResource {
         }
     }
 
-    @GET
-    @ApiOperation(value = "Finds persons",
-            notes = "Retreves persons",
-            response = PersonCollectionResponse.class,
-            responseContainer = "List"
-    )
-    public Response getPersons(
-            @ApiParam(value = "Start", required = true) @QueryParam("start") Integer paramStart,
-            @ApiParam(value = "Size", required = true) @QueryParam("size") Integer paramSize,
-            @ApiParam(value = "Sort", required = true) @QueryParam("sort") String sort,
-            @ApiParam(value = "Order", required = true) @QueryParam("order") OrderType order
-    ) {
+    public Response getPersons(Integer paramStart, Integer paramSize, String sort, OrderType order) {
         int start = (paramStart == null) ? ResourceConstants.PAGING_DEFAULT_START : paramStart;
         int size = (paramSize == null) ? ResourceConstants.PAGING_DEFAULT_SIZE : paramSize;
 
@@ -74,14 +53,7 @@ public class PersonResource extends BaseResource {
         return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponseList(dataResult, this.getHttpRequest())).build();
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @ApiOperation(value = "Creates person",
-            notes = "Creates person from given input"
-    )
-    public Response createPerson(
-            @ApiParam(value = "Person", required = true) PersonRequest personRequest
-    ) {
+    public Response createPerson(PersonRequest personRequest) {
         PersonDTO person = new PersonDTOBuilder()
                 .withFirstName(personRequest.getFirstName())
                 .withLastName(personRequest.getLastName())

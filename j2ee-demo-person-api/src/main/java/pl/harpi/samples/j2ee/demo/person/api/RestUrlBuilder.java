@@ -1,4 +1,4 @@
-package pl.harpi.samples.j2ee.demo.person.rest;
+package pl.harpi.samples.j2ee.demo.person.api;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.MessageFormat;

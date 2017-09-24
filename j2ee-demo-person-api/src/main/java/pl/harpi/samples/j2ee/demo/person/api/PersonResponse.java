@@ -1,4 +1,4 @@
-package pl.harpi.samples.j2ee.demo.person.rest;
+package pl.harpi.samples.j2ee.demo.person.api;
 
 import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
 
