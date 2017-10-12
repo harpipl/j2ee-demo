@@ -5,7 +5,6 @@ public final class RestUrls {
     }
 
     private static final String SEGMENT_VERSION_1 = "v1";
-
     private static final String SEGMENT_REPOSITORY_RESOURCES = "repository";
     private static final String SEGMENT_PERSON_RESOURCE = "persons";
 
