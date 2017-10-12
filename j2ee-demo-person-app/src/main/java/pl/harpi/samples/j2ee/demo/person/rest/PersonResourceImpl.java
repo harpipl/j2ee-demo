@@ -8,7 +8,7 @@ import pl.harpi.samples.j2ee.demo.common.domain.ApplicationException;
 import pl.harpi.samples.j2ee.demo.common.rest.BaseResource;
 import pl.harpi.samples.j2ee.demo.common.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.person.api.*;
-import pl.harpi.samples.j2ee.demo.person.domain.PersonLocal;
+import pl.harpi.samples.j2ee.demo.person.domain.PersonBean;
 
 import javax.ejb.EJBException;
 import javax.enterprise.context.RequestScoped;
@@ -23,11 +23,11 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/v1/repository/persons")
-@Api(value = "PersonResource")
 public class PersonResourceImpl extends BaseResource implements PersonResource {
     @Inject
-    private PersonLocal personService;
+    private PersonBean personService;
 
+    @Override
     public Response getPerson(String personId) {
         try {
             PersonDTO person = personService.getPersonById(Long.valueOf(personId));
@@ -37,6 +37,7 @@ public class PersonResourceImpl extends BaseResource implements PersonResource {
         }
     }
 
+    @Override
     public Response getPersons(Integer paramStart, Integer paramSize, String sort, OrderType order) {
         int start = (paramStart == null) ? ResourceConstants.PAGING_DEFAULT_START : paramStart;
         int size = (paramSize == null) ? ResourceConstants.PAGING_DEFAULT_SIZE : paramSize;
@@ -53,6 +54,7 @@ public class PersonResourceImpl extends BaseResource implements PersonResource {
         return Response.status(Response.Status.OK).entity(RestResponseFactory.createPersonResponseList(dataResult, this.getHttpRequest())).build();
     }
 
+    @Override
     public Response createPerson(PersonRequest personRequest) {
         PersonDTO person = new PersonDTOBuilder()
                 .withFirstName(personRequest.getFirstName())

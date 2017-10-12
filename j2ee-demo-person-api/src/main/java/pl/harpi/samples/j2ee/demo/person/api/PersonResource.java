@@ -1,5 +1,6 @@
 package pl.harpi.samples.j2ee.demo.person.api;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import pl.harpi.samples.j2ee.demo.common.api.OrderType;
@@ -8,6 +9,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+@Api(value = "PersonResource")
+@Path("/v1/repository/persons")
 public interface PersonResource {
     @GET
     @Path("/{personId}")

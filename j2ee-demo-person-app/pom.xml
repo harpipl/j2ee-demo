@@ -126,11 +126,12 @@
                             <springmvc>false</springmvc>
                             <locations>
                                 <location>pl.harpi.samples.j2ee.demo.person.api</location>
-                                <location>pl.harpi.samples.j2ee.demo.person.rest</location>
                             </locations>
-                            <schemes>http</schemes>
+                            <schemes>
+                                <schema>http</schema>
+                            </schemes>
                             <host>localhost:8080</host>
-                            <basePath>/j2ee-demo-person-app</basePath>
+                            <basePath>/j2ee-demo-person-app/rest</basePath>
                             <info>
                                 <title>J2EE-DEMO-PERSON-APP</title>
                                 <version>v1</version>
