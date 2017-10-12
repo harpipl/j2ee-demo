@@ -1,10 +1,10 @@
 package pl.harpi.samples.j2ee.demo.person.domain;
 
-import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
-import pl.harpi.samples.j2ee.demo.person.api.PersonDTOBuilder;
 import pl.harpi.samples.j2ee.demo.common.domain.BaseEntity;
 import pl.harpi.samples.j2ee.demo.common.domain.DTOCreatable;
 import pl.harpi.samples.j2ee.demo.common.domain.ValidationNotificationHandler;
+import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
+import pl.harpi.samples.j2ee.demo.person.api.PersonDTOBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

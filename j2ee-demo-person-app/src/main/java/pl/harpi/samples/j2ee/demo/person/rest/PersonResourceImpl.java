@@ -1,6 +1,5 @@
 package pl.harpi.samples.j2ee.demo.person.rest;
 
-import io.swagger.annotations.Api;
 import pl.harpi.samples.j2ee.demo.common.api.DataResult;
 import pl.harpi.samples.j2ee.demo.common.api.OrderType;
 import pl.harpi.samples.j2ee.demo.common.api.QueryProperty;

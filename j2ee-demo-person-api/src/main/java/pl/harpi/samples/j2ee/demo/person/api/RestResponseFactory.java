@@ -1,9 +1,6 @@
 package pl.harpi.samples.j2ee.demo.person.api;
 
 import pl.harpi.samples.j2ee.demo.common.api.DataResult;
-import pl.harpi.samples.j2ee.demo.person.api.PersonCollectionResponse;
-import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
-import pl.harpi.samples.j2ee.demo.person.api.PersonResponse;
 
 import javax.servlet.http.HttpServletRequest;
 

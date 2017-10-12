@@ -1,11 +1,11 @@
 package pl.harpi.samples.j2ee.demo.person.domain.cmd;
 
-import pl.harpi.samples.j2ee.demo.common.domain.Command;
 import pl.harpi.samples.j2ee.demo.common.domain.ApplicationException;
-import pl.harpi.samples.j2ee.demo.person.domain.PersonNotFoundException;
+import pl.harpi.samples.j2ee.demo.common.domain.Command;
 import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
-import pl.harpi.samples.j2ee.demo.person.domain.PersonBeanContext;
 import pl.harpi.samples.j2ee.demo.person.domain.Person;
+import pl.harpi.samples.j2ee.demo.person.domain.PersonBeanContext;
+import pl.harpi.samples.j2ee.demo.person.domain.PersonNotFoundException;
 
 public class GetPersonByIdCmd implements Command<PersonDTO, PersonBeanContext> {
     private Long personId;

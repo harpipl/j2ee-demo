@@ -3,9 +3,9 @@ package pl.harpi.samples.j2ee.demo.person.domain;
 import pl.harpi.samples.j2ee.demo.common.api.OrderType;
 import pl.harpi.samples.j2ee.demo.common.api.Query;
 import pl.harpi.samples.j2ee.demo.common.api.QueryProperty;
-import pl.harpi.samples.j2ee.demo.person.api.PersonSearchVO;
-import pl.harpi.samples.j2ee.demo.common.rest.ResourceConstants;
 import pl.harpi.samples.j2ee.demo.common.domain.BaseQuery;
+import pl.harpi.samples.j2ee.demo.common.rest.ResourceConstants;
+import pl.harpi.samples.j2ee.demo.person.api.PersonSearchVO;
 
 import javax.persistence.EntityManager;
 

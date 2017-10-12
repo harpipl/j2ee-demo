@@ -3,12 +3,12 @@ package pl.harpi.samples.j2ee.demo.person.domain.cmd;
 import pl.harpi.samples.j2ee.demo.common.api.DataResult;
 import pl.harpi.samples.j2ee.demo.common.api.OrderType;
 import pl.harpi.samples.j2ee.demo.common.api.QueryProperty;
-import pl.harpi.samples.j2ee.demo.common.domain.Command;
 import pl.harpi.samples.j2ee.demo.common.domain.ApplicationException;
+import pl.harpi.samples.j2ee.demo.common.domain.Command;
 import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
 import pl.harpi.samples.j2ee.demo.person.api.PersonSearchVO;
-import pl.harpi.samples.j2ee.demo.person.domain.PersonBeanContext;
 import pl.harpi.samples.j2ee.demo.person.domain.Person;
+import pl.harpi.samples.j2ee.demo.person.domain.PersonBeanContext;
 
 import java.util.ArrayList;
 import java.util.List;

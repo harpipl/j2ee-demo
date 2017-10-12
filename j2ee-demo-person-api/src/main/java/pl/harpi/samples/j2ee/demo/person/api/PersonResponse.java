@@ -1,7 +1,5 @@
 package pl.harpi.samples.j2ee.demo.person.api;
 
-import pl.harpi.samples.j2ee.demo.person.api.PersonDTO;
-
 public class PersonResponse {
     private Long id;
     private String firstName;
