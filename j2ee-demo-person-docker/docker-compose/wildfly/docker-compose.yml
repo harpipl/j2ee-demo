@@ -1,5 +1,5 @@
 wildfly:
-  image: j2ee-demo-docker:1.0-SNAPSHOT
+  image: j2ee-demo-person-docker:1.0-SNAPSHOT
   container_name: wildfly
   ports:
     - "8080:8080"

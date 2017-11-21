@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>j2ee-demo-docker</artifactId>
+    <artifactId>j2ee-demo-person-docker</artifactId>
 
     <properties>
         <maven.build.timestamp.format>'D'yyyyMMdd'T'HHmmssSSS</maven.build.timestamp.format>
