@@ -22,7 +22,7 @@ import java.net.URL;
 
 @RunWith(Arquillian.class)
 @RunAsClient
-public class PersonResourceTest {
+public class PersonResourceIT {
     @CitrusFramework
     private Citrus citrusFramework;
 
